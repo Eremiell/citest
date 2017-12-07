@@ -9,6 +9,7 @@ idirs := -I.
 ldirs := 
 bindefines := -UDEBUG
 dbgdefines := -DDEBUG
+staticdefines := -DSFML_STATIC
 buildopts := 
 linkflags := -lsfml-graphics -lsfml-window -lsfml-audio -lsfml-system -lstdc++fs
 
@@ -24,6 +25,12 @@ dbg:
 lldbg:
 	mkdir -p bin
 	clang++ -std=${std} ${dbgflags} ${warnflags} ${idirs} ${ldirs} ${dbgdefines} ${buildopts} -o bin/${name} $(shell find src -iname "*.cpp") ${linkflags}
+static:
+	mkdir -p bin
+	g++ -std=${std} ${binflags} ${warnflags} ${idirs} ${ldirs} ${bindefines} ${staticdefines} ${buildopts} -o bin/${name} $(shell find src -iname "*.cpp") ${linkflags}
+llstatic:
+	mkdir -p bin
+	clang++ -std=${std} ${binflags} ${warnflags} ${idirs} ${ldirs} ${bindefines} ${staticdefines} ${buildopts} -o bin/${name} $(shell find src -iname "*.cpp") ${linkflags}
 clean:
 	rm -rf bin
 .PHONY:	bin clang dbg clangdbg clean
