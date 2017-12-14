@@ -16,9 +16,9 @@ before_install:
 
 install:
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo apt-get install -qq g++-7 wget; fi
-  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-7 90
-  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-7 90
-  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then CC=gcc-7 && CXX=g++-7
+  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-7 90; fi
+  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-7 90; fi
+  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then CC=gcc-7 && CXX=g++-7; fi
   - sudo mkdir -p /usr/local/include/nlohmann
   - sudo wget -O /usr/local/include/nlohmann/json.hpp https://raw.githubusercontent.com/nlohmann/json/develop/src/json.hpp
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo apt-get install -qq libfreetype6-dev libjpeg-turbo8-dev libx11-dev libxrandr-dev xcb libgl1-mesa-dev flac libflac-dev libogg-dev libvorbis-dev libvorbisenc2 libvorbisfile3 libopenal-dev libudev-dev; fi
