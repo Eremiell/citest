@@ -25,7 +25,7 @@ install:
   - git clone --recursive https://github.com/SFML/SFML.git
   - cd SFML
   - git checkout tags/2.4.2
-  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then CMAKE_CXX_COMPILER="/usr/bin/clang++"" && CMAKE_C_COMPILER="/usr/bin/clang" && CMAKE_CXX_FLAGS="-stdlib=libc++" && CMAKE_C_FLAGS="-stdlib=libc++"; fi
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then CMAKE_CXX_COMPILER="/usr/bin/clang++" && CMAKE_C_COMPILER="/usr/bin/clang" && CMAKE_CXX_FLAGS="-stdlib=libc++" && CMAKE_C_FLAGS="-stdlib=libc++"; fi
   - cmake . -DSFML_STATIC=true
   - make
   - sudo make install
