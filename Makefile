@@ -27,10 +27,10 @@ lldbg:
 	clang++ -std=${std} -stdlib=libc++ ${dbgflags} ${warnflags} ${idirs} ${ldirs} ${dbgdefines} ${buildopts} -o bin/${name} $(shell find src -iname "*.cpp") ${linkflags}
 static:
 	mkdir -p bin
-	g++ -std=${std} ${binflags} ${warnflags} ${idirs} ${ldirs} ${bindefines} ${staticdefines} ${buildopts} -o bin/${name} $(shell find src -iname "*.cpp") ${linkflags}
+	g++ -std=${std} ${binflags} ${warnflags} ${idirs} ${ldirs} ${bindefines} ${staticdefines} ${buildopts} -o bin/${name} $(shell find src -iname "*.cpp") -static ${linkflags}
 llstatic:
 	mkdir -p bin
-	clang++ -std=${std} -stdlib=libc++ ${binflags} ${warnflags} ${idirs} ${ldirs} ${bindefines} ${staticdefines} ${buildopts} -o bin/${name} $(shell find src -iname "*.cpp") ${linkflags}
+	clang++ -std=${std} -stdlib=libc++ ${binflags} ${warnflags} ${idirs} ${ldirs} ${bindefines} ${staticdefines} ${buildopts} -o bin/${name} $(shell find src -iname "*.cpp") -static ${linkflags}
 clean:
 	rm -rf bin
 .PHONY:	bin clang dbg clangdbg clean
