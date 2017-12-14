@@ -1,0 +1,27 @@
+language: cpp
+compiler: gcc
+dist: trusty
+sudo: required
+
+before_install:
+  - sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test
+  - sudo apt-get update -qq
+
+install:
+  - sudo apt-get install -qq g++-7 wget
+  - sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-7 90
+  - sudo mkdir -p /usr/include/nlohmann
+  - sudo wget -O /usr/include/nlohmann/json.hpp https://raw.githubusercontent.com/nlohmann/json/develop/src/json.hpp
+  - sudo apt-get install -qq libfreetype6-dev libjpeg-turbo8-dev libx11-dev libxrandr-dev xcb libgl1-mesa-dev flac libflac-dev libogg-dev libvorbis-dev libvorbisenc2 libvorbisfile3 libopenal-dev
+  - git clone --recursive https://github.com/SFML/SFML.git
+  - mkdir -p SFML/build
+  - cd SFML/build
+  - cmake ..
+  - make
+  - sudo make install
+  - cd ../..
+
+script:
+  - make
+  - make clean
+  - make llvm
