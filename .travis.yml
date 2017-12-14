@@ -9,6 +9,8 @@ before_install:
 
 install:
   - sudo apt-get install -qq g++-7 wget
+  - sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-7 90
+  - sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-7 90
   - CC=gcc-7 && CXX=g++-7
   - sudo mkdir -p /usr/include/nlohmann
   - sudo wget -O /usr/include/nlohmann/json.hpp https://raw.githubusercontent.com/nlohmann/json/develop/src/json.hpp
