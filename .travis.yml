@@ -26,8 +26,8 @@ install:
   - cd SFML
   - git checkout tags/2.4.2
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then CMAKE_CXX_COMPILER="/usr/bin/clang++" && CMAKE_C_COMPILER="/usr/bin/clang" && CMAKE_CXX_FLAGS="-stdlib=libc++" && CMAKE_C_FLAGS="-stdlib=libc++"; fi
-  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then cmake . BUILD_SHARED_LIBS=FALSE; fi
-  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then cmake . SFML_BUILD_FRAMEWORKS=TRUE; fi
+  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then cmake . -DBUILD_SHARED_LIBS=FALSE; fi
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then cmake . -DSFML_BUILD_FRAMEWORKS=TRUE; fi
   - make
   - sudo make install
   - cd ..
