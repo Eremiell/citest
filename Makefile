@@ -18,19 +18,19 @@ gcc:
 	g++ -std=${std} ${binflags} ${warnflags} ${idirs} ${ldirs} ${bindefines} ${buildopts} -o bin/${name} $(shell find src -iname "*.cpp") ${linkflags}
 llvm:
 	mkdir -p bin
-	clang++ -std=${std} ${binflags} ${warnflags} ${idirs} ${ldirs} ${bindefines} ${buildopts} -o bin/${name} $(shell find src -iname "*.cpp") ${linkflags}
+	clang++ -std=${std} -stdlib=libc++ ${binflags} ${warnflags} ${idirs} ${ldirs} ${bindefines} ${buildopts} -o bin/${name} $(shell find src -iname "*.cpp") ${linkflags}
 dbg:
 	mkdir -p bin
 	g++ -std=${std} ${dbgflags} ${warnflags} ${idirs} ${ldirs} ${dbgdefines} ${buildopts} -o bin/${name} $(shell find src -iname "*.cpp") ${linkflags}
 lldbg:
 	mkdir -p bin
-	clang++ -std=${std} ${dbgflags} ${warnflags} ${idirs} ${ldirs} ${dbgdefines} ${buildopts} -o bin/${name} $(shell find src -iname "*.cpp") ${linkflags}
+	clang++ -std=${std} -stdlib=libc++ ${dbgflags} ${warnflags} ${idirs} ${ldirs} ${dbgdefines} ${buildopts} -o bin/${name} $(shell find src -iname "*.cpp") ${linkflags}
 static:
 	mkdir -p bin
 	g++ -std=${std} ${binflags} ${warnflags} ${idirs} ${ldirs} ${bindefines} ${staticdefines} ${buildopts} -o bin/${name} $(shell find src -iname "*.cpp") ${linkflags}
 llstatic:
 	mkdir -p bin
-	clang++ -std=${std} ${binflags} ${warnflags} ${idirs} ${ldirs} ${bindefines} ${staticdefines} ${buildopts} -o bin/${name} $(shell find src -iname "*.cpp") ${linkflags}
+	clang++ -std=${std} -stdlib=libc++ ${binflags} ${warnflags} ${idirs} ${ldirs} ${bindefines} ${staticdefines} ${buildopts} -o bin/${name} $(shell find src -iname "*.cpp") ${linkflags}
 clean:
 	rm -rf bin
 .PHONY:	bin clang dbg clangdbg clean
