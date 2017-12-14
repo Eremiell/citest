@@ -12,6 +12,7 @@ dbgdefines := -DDEBUG
 staticdefines := -DSFML_STATIC
 buildopts := 
 linkflags := -lsfml-graphics -lsfml-window -lsfml-audio -lsfml-system -lstdc++fs
+staticlinkflags := -lsfml-graphics-s -lsfml-window-s -lsfml-audio-s -lsfml-system-s -lstdc++fs
 
 gcc:
 	mkdir -p bin
@@ -27,10 +28,10 @@ lldbg:
 	clang++ -std=${std} -stdlib=libc++ ${dbgflags} ${warnflags} ${idirs} ${ldirs} ${dbgdefines} ${buildopts} -o bin/${name} $(shell find src -iname "*.cpp") ${linkflags}
 static:
 	mkdir -p bin
-	g++ -std=${std} ${binflags} ${warnflags} ${idirs} ${ldirs} ${bindefines} ${staticdefines} ${buildopts} -o bin/${name} $(shell find src -iname "*.cpp") -static ${linkflags}
+	g++ -std=${std} ${binflags} ${warnflags} ${idirs} ${ldirs} ${bindefines} ${staticdefines} ${buildopts} -o bin/${name} $(shell find src -iname "*.cpp") -static ${staticlinkflags}
 llstatic:
 	mkdir -p bin
-	clang++ -std=${std} -stdlib=libc++ ${binflags} ${warnflags} ${idirs} ${ldirs} ${bindefines} ${staticdefines} ${buildopts} -o bin/${name} $(shell find src -iname "*.cpp") -static ${linkflags}
+	clang++ --verbose -std=${std} -stdlib=libc++ ${binflags} ${warnflags} ${idirs} ${ldirs} ${bindefines} ${staticdefines} ${buildopts} -o bin/${name} $(shell find src -iname "*.cpp") -static ${staticlinkflags}
 clean:
 	rm -rf bin
 .PHONY:	bin clang dbg clangdbg clean
