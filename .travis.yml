@@ -12,7 +12,7 @@ install:
   - CC=gcc-7 && CXX=g++-7
   - sudo mkdir -p /usr/include/nlohmann
   - sudo wget -O /usr/include/nlohmann/json.hpp https://raw.githubusercontent.com/nlohmann/json/develop/src/json.hpp
-  - sudo apt-get install -qq libfreetype6-dev libjpeg-turbo8-dev libx11-dev libxrandr-dev xcb libgl1-mesa-dev flac libflac-dev libogg-dev libvorbis-dev libvorbisenc2 libvorbisfile3 libopenal-dev
+  - sudo apt-get install -qq libfreetype6-dev libjpeg-turbo8-dev libx11-dev libxrandr-dev xcb libgl1-mesa-dev flac libflac-dev libogg-dev libvorbis-dev libvorbisenc2 libvorbisfile3 libopenal-dev libudev-dev
   - git clone --recursive https://github.com/SFML/SFML.git
   - mkdir -p SFML/build
   - cd SFML/build
