@@ -18,12 +18,12 @@ install:
   - git clone --recursive https://github.com/SFML/SFML.git
   - mkdir -p SFML/build
   - cd SFML/build
-  - cmake ..
+  - cmake .. -DSFML_STATIC
   - make
   - sudo make install
   - cd ../..
 
 script:
-  - make
+  - make static
   - make clean
-  - make llvm
+  - make llstatic
